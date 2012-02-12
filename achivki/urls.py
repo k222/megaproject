@@ -8,8 +8,8 @@ urlpatterns = patterns('',
     # url(r'^$', 'achivki.views.home', name='home'),
     # url(r'^achivki/', include('achivki.foo.urls')),
 
-    # Uncomment the admin/doc line below to enable admin documentation:
-    url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
+    url(r'^$', 'django.contrib.staticfiles.views.serve', {'path': 'stub.html'}),
 
+    url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
     url(r'^admin/', include(admin.site.urls)),
-)
+) 

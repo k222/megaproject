@@ -9,17 +9,14 @@ ADMINS = (
 
 MANAGERS = ADMINS
 
-import os
-project_root = os.getcwd() + '/../'
-
 DATABASES = {
     'default': {
-        'ENGINE'  : 'django.db.backends.sqlite3',  # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME'    : project_root + 'db/sqlite.db', # Or path to database file if using sqlite3.
-        'USER'    : '',                            # Not used with sqlite3.
-        'PASSWORD': '',                            # Not used with sqlite3.
-        'HOST'    : '',                            # Set to empty string for localhost. Not used with sqlite3.
-        'PORT'    : '',                            # Set to empty string for default. Not used with sqlite3.
+        'ENGINE'  : 'django.db.backends.mysql',  # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
+        'NAME'    : 'esgv_imolodetz', 
+        'USER'    : 'esgv_imolodetz',                          
+        'PASSWORD': 'EsG$P];9Sr(a',   
+        'HOST'    : 'johnny.heliohost.org',               
+        'PORT'    : '',               
     }
 }
 
@@ -33,7 +30,7 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
     'django.contrib.admindocs',
-    'achivki.achievements',
+    'achivki.main'
 )
 
 # Local time zone for this installation. Choices can be found here:
