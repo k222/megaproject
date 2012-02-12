@@ -14,10 +14,10 @@ def application(environ, start_response):
     try:
         lines = list(_application(environ, start_response))
 
-        if lines:
-            return lines
-        else:
+        if not lines:
             raise EmptyApplicationResponse()
+
+        return lines
 
     except Exception as e:
         trace = traceback.format_exc()
