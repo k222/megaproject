@@ -1,0 +1,68 @@
+@header_color: hsl(50, 40%, 90%);
+
+.header {
+    height: 30px;
+    background: #444;
+    border-bottom: 2px solid #333;
+    overflow: hidden;
+
+    color: @header_color;
+    font-family: Century Gothic;
+    font-variant: small-caps;
+    font-size: 13pt;
+}
+
+.header > div {
+    height: 100%;
+}
+
+.header a {
+    position: relative;
+    height: 100%;
+    margin-right: 3px;
+    padding: 15px 3px;
+
+    color: @header_color;
+    text-decoration: none;
+    letter-spacing: 1px;
+
+    -webkit-transition: linear 0.125s;
+
+    border: 1px solid transparent;
+}
+
+.header a:hover {
+    @color: white;
+    color: @color;
+    text-shadow: 0 0 7px @color;
+
+    background: #505050;
+    border-left-color: #3c3c3c;
+    border-right-color: #3c3c3c;
+}
+
+.tick_logo {
+    position: absolute;
+    left: 50%;
+    width: 50px;
+    margin-left: -25px;
+
+    font-size: 15pt;
+    text-shadow: 0 0 7px @header_color;
+}
+
+.user_menu {
+    float: right;
+}
+
+.body {
+    border-style: solid;
+    border-color: #ccc;
+    border-width: 0 1px 1px 1px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+
+    width: 650px;
+    min-height: 800px;
+    background: white;
+}
