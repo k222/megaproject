@@ -1,15 +1,17 @@
 @header_color: hsl(50, 40%, 90%);
+@header_bg_color: #444;
+@header_bg_color_light: lighten(@header_bg_color, 3%);
+@header_bg: -webkit-linear-gradient(bottom, @header_bg_color_light, @header_bg_color, @header_bg_color_light);
+@header_border: #333;
 
 .header {
     height: 30px;
-    background: #444;
-    border-bottom: 2px solid #333;
+    background: @header_bg;
+    border-bottom: 2px solid @header_border;
     overflow: hidden;
+    z-index: 100;
 
     color: @header_color;
-    font-family: Century Gothic;
-    font-variant: small-caps;
-    font-size: 13pt;
 }
 
 .header > div {
@@ -17,28 +19,38 @@
 }
 
 .header a {
+    font-family: Century Gothic;
+    font-variant: small-caps;
+    font-size: 13pt;
+
     position: relative;
     height: 100%;
-    margin-right: 3px;
-    padding: 15px 3px;
+    padding: 15px 6px;
 
     color: @header_color;
     text-decoration: none;
     letter-spacing: 1px;
 
-    -webkit-transition: linear 0.125s;
-
+    -webkit-transition: text-shadow ease-out 0.125s;
     border: 1px solid transparent;
 }
 
 .header a:hover {
     @color: white;
     color: @color;
-    text-shadow: 0 0 7px @color;
+    text-shadow: 0 0 25px @color;
+    background: lighten(@header_bg_color, 5%);
 
-    background: #505050;
-    border-left-color: #3c3c3c;
-    border-right-color: #3c3c3c;
+    @border: lighten(@header_border, 4%);
+    box-shadow: inset 0 0 7px @border;
+    border: 1px solid transparent;
+    border-left-color: @border;
+    border-right-color: @border;
+}
+
+.nav_menu {
+    float: left;
+    // border-right: 1px solid @header_border;
 }
 
 .tick_logo {
@@ -53,6 +65,31 @@
 
 .user_menu {
     float: right;
+    // border-left: 1px solid @header_border;
+}
+
+.user_info {
+    padding: 0 0.5em;
+}
+
+.user_name {
+    font-family: Verdana;
+    font-weight: bold;
+    font-size: 10pt;
+    text-shadow: 1px -1px 0 black;
+    padding-left: 0.5em;
+}
+
+.user_pic {
+    width: 22px;
+    height: 22px;
+    border-radius: 2px;
+    border: 1px solid @header_border;
+}
+
+.user_pic_outer_border {
+    border: 1px solid @header_color;
+    border-radius: 2px;
 }
 
 .body {
@@ -61,8 +98,10 @@
     border-width: 0 1px 1px 1px;
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
+    box-shadow: 0 0px 7px #ccc;
 
     width: 650px;
     min-height: 800px;
+    overflow: hidden;
     background: white;
 }
