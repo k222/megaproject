@@ -9,14 +9,17 @@ ADMINS = (
 
 MANAGERS = ADMINS
 
+import os
+PROJECT_ROOT = os.getcwd() + '/../'
+
 DATABASES = {
     'default': {
         'ENGINE'  : 'django.db.backends.mysql',
-        'NAME'    : 'esgv_imolodetz', 
-        'USER'    : 'esgv_imolodetz',                          
-        'PASSWORD': 'EsG$P];9Sr(a',   
-        'HOST'    : 'johnny.heliohost.org',               
-        'PORT'    : '',               
+        'NAME'    : 'esgv_imolodetz',
+        'USER'    : 'esgv_imolodetz',
+        'PASSWORD': 'EsG$P];9Sr(a',
+        'HOST'    : 'johnny.heliohost.org',
+        'PORT'    : ''
     }
 }
 
