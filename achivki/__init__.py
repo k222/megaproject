@@ -1,2 +1,4 @@
-# I did it! I am achivki master. Yeah! Fuck yeah!
-# FUCK YEAH!
+# I did it! I am achivki master. Yeah! FUCK YEAH!
+
+# Ребятюни,я специально сделал этот коммит, чтобы затестить как работают
+# оповещения на почту. Отпишитесь мне в скайпе, что всё зашибись.
