@@ -3,59 +3,102 @@
 <html>
 
 <head>  
-    <title>Ямолодец!</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>Счётчик пони!</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
 	<style type="text/css">
+      @font-face {
+        font-family:'CelestiaMedium';
+        font-style:normal;
+        font-weight:normal;
+        src: url('http://www.ponycountdown.com/celestiamedium-v1.51-webfont.eot');
+        src: url('http://www.ponycountdown.com/celestiamedium-v1.51-webfont.eot?#iefix') format('eot'),
+             url('http://www.ponycountdown.com/celestiamedium-v1.51-webfont.woff') format('woff'),
+             url('http://www.ponycountdown.com/celestiamedium-v1.51-webfont.ttf') format('truetype'),
+             url('http://www.ponycountdown.com/celestiamedium-v1.51-webfont.svg#webfontz6kMIS7r') format('svg');
+      }
+
 	    * {
 	        margin: 0;
 	        padding: 0;
 	    }   
-	    	     
-	    h1 {
-	        font-size: 80pt;
-	        font-weight: normal;
-	        font-family: Tahoma;
-	        letter-spacing: 5px;
-	        text-shadow: rgba(255, 255, 255, 0.5) 0 0 20px;
-	    }
-	    	       
+
 	    body {
-	        font-family: Verdana;
-	        font-size: 10pt;
+	        font-family: 'CelestiaMedium';
+	        font-size: 25pt;
 	        text-align: center;
 	        
 	        position: absolute;
 	        height: 100%;
 	        width: 100%;
 	        
-	        background: black;
-	        color: white;
-	        text-shadow: rgba(255, 255, 255, 0.75) 0 0 7px;
+	        background: #A0D6DD;
+	        color: hsl(187, 47%, 37%);
+          text-shadow: 2px 2px 0 hsl(187, 47%, 17%);
+          text-align: center;
 	    }
 	    	    
 	    table.valign {
 	        position: relative;
 	        height: 100%;
 	        width: 100%;
-	        border-spacing: none;
+	        border-spacing: 0;
 	        border-collapse: collapse;
 	    }
-	    
-	    body *::first-letter {
-            color: red;
-            text-shadow: rgba(255, 0, 0, 1) 0 0 15px;
-        } 
+      
+      a {
+        text-shadow: none;
+        text-decoration: none;
+        border-bottom: 1px dotted;
+        color: hsl(2, 47%, 37%);
+        font-size: 15pt;
+        position: relative;
+        top: 1em;
+      }
+    
+      a.login {
+        color: hsl(187, 47%, 37%);
+        font-family: Verdana;
+        font-size: 12pt;
+      }
+
+      div.login {
+        margin-top: 1em;
+      }
+
+      div.center {
+        display: inline-block;
+        width: 600px;
+      }
+
 	</style>
+
+  <script
+    type="text/javascript"
+    src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js">
+  </script>
+
+  <script
+    type="text/javascript"
+    src="http://ponycountdown.com/api.js">
+  </script>
 </head>
 
 <body>
 
-<table class="valign"><tr><td>
-   <h1>Fuck Yeah!</h1>
-   Запилил группе сайт<br>
-    <a href = "/register" >Регистрация</a><br>
-    <a href = "/login" >Войти</a><br>
-</td></tr></table>
+
+  <table class="valign"><tr><td>
+
+    <div class="center">
+      <script type="text/javascript">ponyCountdown();</script>
+    </div>
+
+    <div class="login">
+      <a class="login" href = "/register" >Регистрация</a><br>
+      <a class="login" href = "/login" >Войти</a><br>
+    </div>
+
+  </td></tr></table>
 
 </body>
 
