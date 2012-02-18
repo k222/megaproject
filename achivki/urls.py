@@ -1,5 +1,8 @@
 from django.conf.urls.defaults import patterns, include, url
 
+from achivki.main.views.registration import register
+from django.contrib.auth.views import login, logout
+
 from django.contrib import admin
 admin.autodiscover()
 
@@ -13,4 +16,8 @@ urlpatterns = patterns('',
 
     url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
     url(r'^admin/', include(admin.site.urls)),
+
+    url(r'^register$', register),
+    url(r'^login$',  login, {'template_name': 'login.html'}),
+    url(r'^logout$', logout, {'template_name': 'logout.html'}),
 ) 
