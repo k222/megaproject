@@ -1,0 +1,24 @@
+<div class="user_menu">
+  <table class="valign"><tr>
+
+    {% if user.is_authenticated %}
+
+      <td><a href="/settings">Настроечки</a></td>
+
+      <td>
+        <div class="user_pic_outer_border">
+          <img class="user_pic" src="/static/img/chuck_userpic.png">
+        </div>
+      </td>
+
+      <td class="user_name">{{ user.username }}</td>
+
+      <td><a href="/logout">Выйти</a></td>
+
+    {% else %}
+      <td><a href="/register">Регистрация</a></td>
+      <td><a href="/login">Войти</a></td>
+    {% endif %}
+
+  </tr></table>
+</div>
