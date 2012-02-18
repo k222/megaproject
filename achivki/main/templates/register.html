@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block title %}Регистрация / TickIt{% endblock %}
+
+{% block head %}
+  <link rel="stylesheet" type="text/css" href="/static/less/register.less">
+{%endblock}
+
+{% block content %}
+  <h1>Регистрация</h1>
+
+  <p class="error">{{ error }}</p>
+
+  <form action="" method="post">
+    {{ form.as_p }}
+    {% csrf_token %}
+    <input type="submit" class="but" value="Зарегистрироваться">
+  </form>
+{% endblock %}

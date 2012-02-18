@@ -23,5 +23,5 @@ def register(request):
         'form': form
     }
     context.update(csrf(request))
-    return render_to_response("registration.html", context)
+    return render_to_response("register.html", context)
 

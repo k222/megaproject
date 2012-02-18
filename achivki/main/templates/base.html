@@ -2,68 +2,72 @@
         "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 
+
 <head>
-    <title>{% block title %}TickIt!{% endblock %}</title>
+  <title>{% block title %}TickIt{% endblock %}</title>
 
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
-    <link rel="stylesheet/less" type="text/css" href="/static/less/default.less">
-    <link rel="stylesheet/less" type="text/css" href="/static/less/base.less">
-    <link rel="stylesheet" type="text/css" href="/static/css/registration.css">
-    <script type="text/javascript" src="/static/js/less-1.2.0.min.js"></script>
+  <link rel="stylesheet/less" type="text/css" href="/static/less/default.less">
+  <link rel="stylesheet/less" type="text/css" href="/static/less/base.less">
+
+  <script type="text/javascript" src="/static/js/less-1.2.0.min.js"></script>
+
+  {% block head %}{% endblock %}
 </head>
+
 
 <body>
 
 <div class="header center">
-    <div class="nav_menu">
-        <table class="valign"><tr>
-            <td><a href="/lenta">Лента</a></td>
-            <td><a href="/me">Делай!</a></td>
-            <td><a href="/explore">Исследуй</a></td>
-        </table>
-    </div>
 
+  <div class="nav_menu">
+    <table class="valign"><tr>
+      <td><a href="/lenta">Лента</a></td>
+      <td><a href="/me">Делай!</a></td>
+      <td><a href="/explore">Исследуй</a></td>
+    </table>
+  </div>
 
-    <div class="tick_logo">
-        <table class="valign"><tr><td>
-            &#x2713;
-        </td></tr></table>
-    </div>
+  <div class="tick_logo">
+    <table class="valign"><tr><td>
+      &#x2713;
+    </td></tr></table>
+  </div>
 
-    <div class="user_menu">
-        <table class="valign"><tr>
-            <td><a href="/settings">Настроечки</a></td>
-            {% if user.is_authenticated %}
-                <td class="user_info">
-                    <table class="valign"><tr>
-                        <td>
-                            <div class="user_pic_outer_border">
-                                <img class="user_pic" src="/static/img/chuck_userpic.png">
-                            </div>
-                        </td>
+  <div class="user_menu">
+    <table class="valign"><tr>
+      <td><a href="/settings">Настроечки</a></td>
+      {% if user.is_authenticated %}
+        <td class="user_info">
+          <table class="valign"><tr>
+            <td>
+              <div class="user_pic_outer_border">
+                  <img class="user_pic" src="/static/img/chuck_userpic.png">
+              </div>
+            </td>
 
-                        <td class="user_name">{{ user.username }}</td>
-                    </tr></table>
-                </td>
+              <td class="user_name">{{ user.username }}</td>
+          </tr></table>
+        </td>
 
-                <td><a href="/logout">Выйти</a></td>
-            {% else %}
-                <td ><a href="/register">Регистрация</a></td>
-                <td ><a href="/login">Войти</a></td>
-            {% endif %}
-
-        </tr></table>
-    </div>
+        <td><a href="/logout">Выйти</a></td>
+      {% else %}
+        <td ><a href="/register">Регистрация</a></td>
+        <td ><a href="/login">Войти</a></td>
+      {% endif %}
+    </tr></table>
+  </div>
 
 </div>
 
 
 <div class="center">
-    <div class="body">
-        {% block content %}{% endblock %}
-    </div>
+  <div class="body">
+    {% block content %}{% endblock %}
+  </div>
 </div>
+
 
 </body>
 
