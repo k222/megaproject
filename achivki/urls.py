@@ -1,6 +1,6 @@
 from django.conf.urls.defaults import patterns, include, url
 
-from achivki.main.views.registration import register
+from achivki.main.views.registration import register,losepassword
 from django.contrib.auth.views import login, logout
 
 from django.contrib import admin
@@ -20,4 +20,5 @@ urlpatterns = patterns('',
     url(r'^register$', register),
     url(r'^login$',  login, {'template_name': 'login.html'}),
     url(r'^logout$', logout, {'template_name': 'logout.html'}),
+    url(r'^losepassword$', losepassword),
 ) 
