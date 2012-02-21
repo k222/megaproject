@@ -1,7 +1,7 @@
 import os, sys, traceback
 
 sys.path.append("/home/esgv/public_html/");
-os.environ['DJANGO_SETTINGS_MODULE'] = 'achivki.settings'
+os.environ['DJANGO_SETTINGS_MODULE'] = 'achivki.settings_release'
 os.environ['PYTHON_EGG_CACHE'] = '/home/esgv/.python_cache'
 
 import django.core.handlers.wsgi
