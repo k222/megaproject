@@ -5,3 +5,6 @@
 .pydevproject
 
 .idea
+
+/achivki/static
+!/achivki/static/admin
