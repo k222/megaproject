@@ -11,7 +11,7 @@ urlpatterns = patterns('',
     # url(r'^$', 'achivki.views.home', name='home'),
     # url(r'^achivki/', include('achivki.foo.urls')),
 
-    url(r'^$', 'django.contrib.staticfiles.views.serve', {'path': 'stub.html'}),
+    url(r'^$', 'django.shortcuts.render', {'template_name': 'stub.html'}),
     url(r'^base$', 'django.shortcuts.render', {'template_name': 'base.html'}),
 
     url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
