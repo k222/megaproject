@@ -156,3 +156,9 @@ RECAPTCHA_PRIVATE_KEY = '6Le97tASAAAAAJcGjaUTHzPyjoYTXTvjsKwqN0yX'
 RECAPTCHA_THEME = 'white' #optional
 # lang value is taken from LANGUAGE_CODE, example
 LANGUAGE_CODE = 'ru'
+
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'testachivki@gmail.com'
+EMAIL_HOST_PASSWORD = 'achivki1111'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True

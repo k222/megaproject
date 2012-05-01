@@ -7,26 +7,34 @@ from achivki.main.views.forms import MyUserCreationForm
 from django.core.mail import send_mail
 from django.utils.translation import ugettext_lazy as _
 from django.contrib.auth.models import User
-
+from achivki.main.models import UProfile
 
 
 def register(request):
-    error="";
+    errors = [];
     if request.method == 'POST':
         #form = UserCreationForm(request.POST)
         form = MyUserCreationForm(request.POST)
         if (form.is_valid()):
-            new_user = form.save(request)
-            user = auth.authenticate(username=request.POST['username'],
+            user_email = request.POST.get('email','')
+            is_email = UProfile.objects.filter(email=user_email)
+            if is_email:
+                errors.append( _(u'Пользователь с таким Email уже существует'))
+            else:
+                new_user = form.save(request)
+                new_profile = UProfile(id=new_user.id, name=request.POST['username'], email=user_email,
+                                          password = request.POST['password1'])
+                new_profile.save()
+                user = auth.authenticate(username=request.POST['username'],
                                         password=request.POST['password1'])
-            auth.login(request, user)
-            return HttpResponseRedirect("/base")
+                auth.login(request, user)
+                return HttpResponseRedirect("/base")
     else:
         form = MyUserCreationForm()
         #form = UserCreationForm()
     context = {
         'form': form,
-        'error': error
+        'errors': errors
     }
     context.update(csrf(request))
     return render_to_response("register.html", context)
@@ -37,10 +45,9 @@ def losepassword(request):
     if request.method == 'POST':
         if(request.POST['email']):
             user_email = request.POST.get('email','')
-            print user_email
-            p = User.objects.filter(email=user_email)
+            p = UProfile.objects.filter(email=user_email)
             if p:
-                msg = _(u" Ваш логин: %s <br> Ваш пароль: %s" % p.username, p.password)
+                msg = _(u" Your login: %(name)s <br> Your password: %(password)s" % {'name':p[0].name, 'password':p[0].password})
                 topic = _(u"Lost password achivki.ru")
                 send_mail(topic, msg, 'Ann1137@ya.ru',
                     [user_email], fail_silently=False)

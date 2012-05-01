@@ -8,7 +8,9 @@
 
 {% block content %}
     {% if errors %}
-        <p class="error">{{error}}</p>
+        {% for error in errors %}
+            <p class="error">{{ error }}</p>
+        {% endfor %}
     {% endif %}
    <form action="" method="post">
     <table class="reg_tbl">{{ form.as_table }}</table>
