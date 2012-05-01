@@ -34,6 +34,7 @@ INSTALLED_APPS = (
     'django.contrib.admindocs',
 
     'achivki.main',
+
 )
 
 # Local time zone for this installation. Choices can be found here:
@@ -146,3 +147,12 @@ LOGGING = {
         },
     }
 }
+
+
+
+# your project's settings.py
+RECAPTCHA_PUBLIC_KEY = '6Le97tASAAAAAI2tOR4j0JTG5xUWKwdozuD9nWXo'
+RECAPTCHA_PRIVATE_KEY = '6Le97tASAAAAAJcGjaUTHzPyjoYTXTvjsKwqN0yX'
+RECAPTCHA_THEME = 'white' #optional
+# lang value is taken from LANGUAGE_CODE, example
+LANGUAGE_CODE = 'ru'
