@@ -28,7 +28,7 @@ def register(request):
                 user = auth.authenticate(username=request.POST['username'],
                                         password=request.POST['password1'])
                 auth.login(request, user)
-                return HttpResponseRedirect("/base")
+                return HttpResponseRedirect("/feed")
     else:
         form = MyUserCreationForm()
         #form = UserCreationForm()

@@ -1,44 +1,37 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-        "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-
-
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-  <title>{% block title %}TickIt{% endblock %}</title>
+    <title>{% block title %}TickIt{% endblock %}</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" type="text/css" href="/static/css/style.css"  />
 
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <!--<link rel="stylesheet/less" type="text/css" href="/static/less/default.less">
+    <link rel="stylesheet/less" type="text/css" href="/static/less/base.less">
+    <link rel="stylesheet/less" type="text/css" href="/static/less/register.less">
 
-  <link rel="stylesheet/less" type="text/css" href="/static/less/default.less">
-  <link rel="stylesheet/less" type="text/css" href="/static/less/base.less">
-  <link rel="stylesheet/less" type="text/css" href="/static/less/register.less">
+    <script type="text/javascript" src="/static/js/less-1.2.0.min.js"></script>-->
 
-  <script type="text/javascript" src="/static/js/less-1.2.0.min.js"></script>
-
-  {% block head %}{% endblock %}
+    {% block head %}{% endblock %}
 </head>
-
 
 <body>
 
-<div class="header center">
-  {% include "nav_menu.html" %}
+<div id="container_wrapper">
+    <div id="container">
 
-  <div class="tick_logo">
-    <table class="valign"><tr><td>
-      &#x2713;
-    </td></tr></table>
-  </div>
+        {% include "header.html" %}
 
-  {% include "user_menu.html" %}
+        {% include "nav_menu.html" %}
+
+        <div id="content">
+            {% block content %}{% endblock %}
+        </div>
+
+        {% include "footer.html" %}
+
+        {% include "information.html" %}
+
+    </div>
 </div>
-
-
-<div class="center">
-  <div class="body">
-    {% block content %}{% endblock %}
-  </div>
-</div>
-
 </body>
-
 </html>
