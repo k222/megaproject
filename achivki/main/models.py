@@ -7,7 +7,7 @@ class UProfile(models.Model):
     email = models.EmailField()
 
     def get_gravatar_url(self):
-        default = "host664.hnt.ru/static/img/chuck_userpic.png"
+        default = "host664.hnt.ru/static/img/chuck.png"
         size = 100
         gravatar_url = "http://www.gravatar.com/avatar/" + hashlib.md5(self.email.lower()).hexdigest() + "?"
         gravatar_url += urllib.urlencode({'d':default, 's':str(size)})
