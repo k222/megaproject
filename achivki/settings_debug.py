@@ -3,6 +3,8 @@
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
+AUTH_PROFILE_MODULE = 'achivki.UserProfile'
+
 ADMINS = (
     # ('Your Name', 'your_email@example.com'),
 )
@@ -15,7 +17,7 @@ PROJECT_ROOT = os.getcwd() + '/../'
 DATABASES = {
     'default': {
         'ENGINE'  : 'django.db.backends.mysql',
-        'NAME'    : 'tickit',
+        'NAME'    : 'tickit2',
         'USER'    : 'application',
         'PASSWORD': 'EsG$P];9Sr(a',
         'HOST'    : 'host6640.hnt.ru',

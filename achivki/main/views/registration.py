@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+import user
 from django.http import HttpResponseRedirect
 from django.shortcuts import render_to_response
 from django.contrib import auth
@@ -7,37 +8,22 @@ from achivki.main.views.forms import MyUserCreationForm
 from django.core.mail import send_mail
 from django.utils.translation import ugettext_lazy as _
 from django.contrib.auth.models import User
-from achivki.main.models import UProfile
+from achivki.main.models import UserProfile
 
 
 def register(request):
     errors = [];
     if request.method == 'POST':
-        #form = UserCreationForm(request.POST)
         form = MyUserCreationForm(request.POST)
-        if (form.is_valid()):
-            user_email = request.POST.get('email','')
-            is_email = UProfile.objects.filter(email=user_email)
-            if is_email:
-                errors.append( _(u'Пользователь с таким Email уже существует'))
-            else:
-                new_user = form.save(request)
-                new_profile = UProfile(id=new_user.id, name=request.POST['username'], email=user_email,
-                                          password = request.POST['password1'])
-                new_profile.save()
-                user = auth.authenticate(username=request.POST['username'],
-                                        password=request.POST['password1'])
-                auth.login(request, user)
-                return HttpResponseRedirect("/feed")
+        if form.is_valid():
+            form.save(request)
+            request.user = auth.authenticate(username=request.POST['username'],
+                                             password=request.POST['password1'])
+            auth.login(request, request.user)
+            return HttpResponseRedirect("/feed")
     else:
         form = MyUserCreationForm()
-        #form = UserCreationForm()
-    context = {
-        'form': form,
-        'errors': errors
-    }
-    context.update(csrf(request))
-    return render_to_response("register.html", context)
+    return render_to_response("register.html", {'form' : form})
 
 def losepassword(request):
     errors = []
@@ -45,7 +31,7 @@ def losepassword(request):
     if request.method == 'POST':
         if(request.POST['email']):
             user_email = request.POST.get('email','')
-            p = UProfile.objects.filter(email=user_email)
+            p = UserProfile.objects.filter(email=user_email)
             if p:
                 msg = _(u" Your login: %(name)s <br> Your password: %(password)s" % {'name':p[0].name, 'password':p[0].password})
                 topic = _(u"Lost password achivki.ru")
