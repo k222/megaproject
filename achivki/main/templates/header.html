@@ -3,14 +3,12 @@
         <div class="logo"></div>
     </div>
 
-    {% if user.is_authenticated %}
-
+    {% if is_authenticated %}
         <div class="aboutco">
-            <div class="inform"><img class="avatar_small" src="{{ gravatar_url }}"><a class="name" href="settings">&nbsp;{{ user.username }}&nbsp;</a>|<a class="quit" href="logout">&nbsp;Выход&nbsp;</a></div>
+            <div class="inform"><img class="avatar_small" src="{{ gravatar_url }}"><a class="name" href="/{{ username }}">&nbsp;{{ username }}&nbsp;</a>|<a class="quit" href="logout">&nbsp;Выход&nbsp;</a></div>
         </div>
 
     {% else %}
-
         <div class="aboutco">
             <div class="inform"><a class="name" href="register">&nbsp;Регистрация&nbsp;</a>|<a class="quit" href="login">&nbsp;Вход&nbsp;</a></div>
         </div>

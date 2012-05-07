@@ -1,8 +1,17 @@
 {% extends "generic/site_base.html" %}
 
-{% block title %}Лента{% endblock %}
+{% block title %}{{ username }}{% endblock %}
 
 {% block content %}
+
+{% if is_my_page %}
+        ЭТО ВЫ!!!
+{% endif %}
+
+{% if not is_my_page and user_is_authenticated %}
+        ОНЛАЙН!!!
+{% endif %}
+
 <div id="leftcolumn">
 
 
@@ -10,7 +19,7 @@
         <div class="rc_paneltop2"></div>
         <div class="rc_panelbody">
             <form method="post" action="http://www.css-school.ru/">
-                <input class="textfield2" name="doing" type="text" value="Что Вы сейчас делаете?" id="keyword" />
+                <input class="textfield2" name="doing" type="text" value="Что Вы сейчас делаете?" id="keyword" / >
             </form>
         </div>
         <div class="rc_panelbottom2"></div>

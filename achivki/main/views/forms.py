@@ -79,7 +79,7 @@ class MyUserCreationForm(UserCreationForm):
         email = self.cleaned_data["email"]
         try:
             User.objects.get(email=email)
-        except UserProfile.DoesNotExist:
+        except User.DoesNotExist:
             return email
         raise forms.ValidationError(self.error_messages['duplicate_email'])
 

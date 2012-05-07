@@ -5,10 +5,11 @@ from  achivki.main.views.login import mylogin
 
 def feed(request):
     if request.user.is_authenticated():
-        user = UserProfile.objects.get(pk=request.user.id)
         context = {
-            'user' : request.user,
-            'gravatar_url' : user.get_gravatar_url()
+            'username' : request.user.username,
+            'gravatar_url' : request.user.get_profile().get_gravatar_url(),
+            'is_authenticated' : True,
+            # TODO: add feed content, sidebar content
         }
         return render_to_response("feed.html", context)
     else:

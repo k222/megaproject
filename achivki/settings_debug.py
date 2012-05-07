@@ -3,7 +3,7 @@
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
-AUTH_PROFILE_MODULE = 'achivki.UserProfile'
+AUTH_PROFILE_MODULE = 'main.UserProfile'
 
 ADMINS = (
     # ('Your Name', 'your_email@example.com'),

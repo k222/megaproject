@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-import user
 from django.http import HttpResponseRedirect
 from django.shortcuts import render_to_response
 from django.contrib import auth
@@ -7,7 +6,6 @@ from django.core.context_processors import csrf
 from achivki.main.views.forms import MyUserCreationForm
 from django.core.mail import send_mail
 from django.utils.translation import ugettext_lazy as _
-from django.contrib.auth.models import User
 from achivki.main.models import UserProfile
 
 

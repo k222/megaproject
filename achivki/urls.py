@@ -4,7 +4,7 @@ from achivki.main.views.registration import register,losepassword
 from achivki.main.views.login import mylogin
 from django.contrib.auth.views import logout
 
-#from achivki.main.views.profile import profile
+from achivki.main.views.profile import profile
 from achivki.main.views.feed import feed
 
 from django.contrib import admin
@@ -26,6 +26,6 @@ urlpatterns = patterns('',
     url(r'^logout$', logout, {'template_name': 'logout.html'}),
     url(r'^losepassword$', losepassword),
 
-    # url(r'^(?P<id>id\d+)$', profile, name='profile'),
     url(r'^feed$', feed),
+    url(r'^(?P<username>.+)$', profile, name='profile'),
 )

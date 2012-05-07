@@ -22,6 +22,6 @@ class UserProfile(models.Model):
 
     post_save.connect(create_user_profile, sender=User)
 
-    #@models.permalink
-    #def get_absolute_url(self):
-    #    return ('profile', [str(self.id)])
+    @models.permalink
+    def get_absolute_url(self):
+        return ('profile', [str(self.user.username)])
