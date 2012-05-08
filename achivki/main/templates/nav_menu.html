@@ -1,9 +1,11 @@
 <div id="menu">
+   {% if is_authenticated %}
     <ul>
         <li><a href="feed" class="current">Лента</a></li>
         <li><a href="achievements">Достижения</a></li>
-        <li><a href="recomendations">Рекомендации</a></li>
+        <li><a href="advice">Рекомендации</a></li>
         <li><a href="friends">Друзья</a></li>
     </ul>
+    {% endif %}
 
 </div>

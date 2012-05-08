@@ -24,7 +24,10 @@
         {% include "nav_menu.html" %}
 
         <div id="content">
+            <div id="leftcolumn">
             {% block content %}{% endblock %}
+            </div>
+            {% include "right_menu.html" %}
         </div>
 
         {% include "footer.html" %}

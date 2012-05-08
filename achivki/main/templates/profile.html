@@ -1,6 +1,6 @@
 {% extends "generic/site_base.html" %}
 
-{% block title %}{{ username }}{% endblock %}
+{% block title %}{{ profile_name }}{% endblock %}
 
 {% block content %}
 
@@ -12,14 +12,11 @@
         ОНЛАЙН!!!
 {% endif %}
 
-<div id="leftcolumn">
-
-
     <div class="rc_panel2">
         <div class="rc_paneltop2"></div>
         <div class="rc_panelbody">
             <form method="post" action="http://www.css-school.ru/">
-                <input class="textfield2" name="doing" type="text" value="Что Вы сейчас делаете?" id="keyword" / >
+                <input class="textfield2" name="doing" type="text" value="Что Вы сейчас делаете?" id="keyword" />
             </form>
         </div>
         <div class="rc_panelbottom2"></div>
@@ -160,46 +157,6 @@
             </div>
         </div>
     </div>
-</div>
-<div id="rightcolumn">
-    <div class="rc_panel">
-        <div class="rc_paneltop"></div>
-        <div class="rc_panelbody">
-            <form method="post" action="http://www.css-school.ru/">
-                <input class="textfield" name="search" type="text" value="Поиск..." id="keyword"/>
-                <input class="button" type="submit" name="Submit" value="Go" />
-            </form>
-        </div>
-        <div class="rc_panelbottom"></div>
-    </div>
-    <div class="rc_panel">
-        <div class="rc_paneltop"></div>
-        <div class="rc_panelbody">
-            <h3>Мои недавние достижения</h3>
-            <ul>
-                <li><a href="http://www.css-school.ru/">Duis vitae velit</a></li>
-                <li><a href="http://www.css-school.ru/">Aliquet ligula</a></li>
-                <li><a href="http://www.css-school.ru/">Elementum ipsum velit</a></li>
-                <li><a href="http://www.css-school.ru/">Vitae velit sed</a></li>
-                <li><a href="http://www.css-school.ru/">Sed dui malesuada</a></li>
-                <li><a href="http://www.css-school.ru/">Pellentesque vitae magna</a></li>
-            </ul>
-        </div>
-        <div class="rc_panelbottom"></div>
-    </div>
-    <div class="rc_panel">
-        <div class="rc_paneltop"></div>
-        <div class="rc_panelbody">
-            <h3>Рекомендации</h3>
-            <ul>
-                <li><a href="http://www.css-school.ru/">January, 2020</a></li>
-                <li><a href="http://www.css-school.ru/">Fabruary, 2020</a></li>
-                <li><a href="http://www.css-school.ru/">March, 2020</a></li>
-                <li><a href="http://www.css-school.ru/">April, 2020</a></li>
-                <li><a href="http://www.css-school.ru/">May, 2020</a></li>
-            </ul>
-        </div>
-        <div class="rc_panelbottom"></div>
-    </div>
-</div>
+
+
 {% endblock %}

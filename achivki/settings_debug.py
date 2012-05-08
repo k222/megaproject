@@ -150,8 +150,10 @@ LOGGING = {
     }
 }
 
+SESSION_COOKIE_AGE = 3600
 
-
+LOGIN_URL = '/login'
+LOGIN_REDIRECT_URL = '/feed'
 # your project's settings.py
 RECAPTCHA_PUBLIC_KEY = '6Le97tASAAAAAI2tOR4j0JTG5xUWKwdozuD9nWXo'
 RECAPTCHA_PRIVATE_KEY = '6Le97tASAAAAAJcGjaUTHzPyjoYTXTvjsKwqN0yX'
@@ -159,8 +161,8 @@ RECAPTCHA_THEME = 'white' #optional
 # lang value is taken from LANGUAGE_CODE, example
 LANGUAGE_CODE = 'ru'
 
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = 'testachivki@gmail.com'
-EMAIL_HOST_PASSWORD = 'achivki1111'
+EMAIL_HOST = 'smtp.bk.ru'
+EMAIL_HOST_USER = 'tickit@bk.ru'
+EMAIL_HOST_PASSWORD = 'EsG$P];9Sr(a'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
