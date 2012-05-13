@@ -7,14 +7,19 @@ from django.http import HttpResponse,HttpResponseRedirect
 from django.utils.translation import ugettext_lazy as _
 from django.core.mail import send_mail
 from smtplib import SMTPException
+from django.http import Http404
 from django.contrib.auth.decorators import login_required
 
 @login_required()
-def show_friends(request):
+def show_friends(request, username):
     search_friends = request.POST.get('search_friends',"")
     friends=[]
     if request.user.is_authenticated():
-        user = User.objects.get(id=request.user.id)
+        try:
+            user = User.objects.get(username=username)
+        except User.DoesNotExist:
+            raise Http404
+        #user = User.objects.get(id=request.user.id)
 
         friendsList = UserFriends.objects.filter(user=user)
 
@@ -23,10 +28,16 @@ def show_friends(request):
             for friendEl in friendsList:
                 try:
                     friend = User.objects.get(id=friendEl.friends.id, username__contains=search_friends)
+                    already_friend = False
+                    my_profile = False
+                    if request.user.is_authenticated():
+                        already_friend =  is_friend(request.user, friend)
+                        my_profile = (friend.username == request.user.username)
                     friend_hash = {'is_authenticated' : friend.is_authenticated(),
                                    'name' : friend.username,
                                    'gravatar_url' : friend.get_profile().get_gravatar_url(),
-                                   'already_friend' : True
+                                   'already_friend' : already_friend,
+                                   'my_profile':my_profile
                     }
                     friend_hash.update(csrf(request))
                     friends.append (friend_hash)
@@ -38,12 +49,14 @@ def show_friends(request):
         'is_authenticated' : request.user.is_authenticated(),
         'friends' : friends,
         'search_friends' : search_friends,
-        'profile_name' : request.user.username if request.user.is_authenticated() else "",
-        'gravatar_url' : request.user.get_profile().get_gravatar_url() if request.user.is_authenticated() else "",
-        'empty_text': _(u"Друзей по Вашему запросу не найдено") if(search_friends) else _(u"У Вас пока нет друзей"),
+        'profile_name' : user.username,
+        'gravatar_url' : user.get_profile().get_gravatar_url(),
+        'empty_text': _(u"Друзей по Вашему запросу не найдено") if(search_friends)
+                     else _(u"У %(name)s пока нет друзей" % {'name':user.username}),
         'search_word': request.POST.get('search_word',""),
         'show_friends_filter': True,
-        'actfriends':True
+        'actfriends':True,
+        'my_username':request.user.username
     }
     return render_to_response("friends.html", context)
 
@@ -52,7 +65,7 @@ def search_friends(request):
 
     users=[]
     search_word = request.POST.get('search_word',"")
-    search_word = search_word if(search_word == 'Поиск людей') else ""
+    search_word = "" if(search_word == _(u'Поиск людей')) else search_word
     #user_id= request.user.id if request.user.is_authenticated() else 0
     userList = User.objects.filter(username__contains=search_word)
     if(request.user.is_authenticated()):
@@ -77,7 +90,8 @@ def search_friends(request):
         'profile_name' : request.user.username if request.user.is_authenticated() else "",
         'gravatar_url' : request.user.get_profile().get_gravatar_url() if request.user.is_authenticated() else "",
         'empty_text': _(u"По вашему запросу ничего не найдено"),
-        'show_friends_filter': False
+        'show_friends_filter': False,
+        'my_username':request.user.username
     }
     context.update(csrf(request))
     return render_to_response("friends.html", context)
@@ -113,7 +127,7 @@ def add_friends(request):
     if(request.method == "POST"):
         return HttpResponse(error)
     else:
-        return HttpResponseRedirect("/friends")
+        return HttpResponseRedirect(request.user.username+"/friends")
     #return render_to_response('friends.html', error)
     #show_friends(request)
 
@@ -142,7 +156,7 @@ def delete_friends(request):
     if(request.method == "POST"):
         return HttpResponse(error)
     else:
-        return HttpResponseRedirect("/friends")
+        return HttpResponseRedirect(request.user.username+"/friends")
 
 def is_friend(user_obj, friend_obj):
     is_friend = False

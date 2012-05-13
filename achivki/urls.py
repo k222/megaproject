@@ -28,7 +28,7 @@ urlpatterns = patterns('',
     url(r'^search_friends$', search_friends),
     url(r'^add_friends$', add_friends),
     url(r'^delete_friends$', delete_friends),
-    url(r'^friends$', show_friends),
+    url(r'^(?P<username>.+)/friends$', show_friends),
     url(r'^feed$', feed),
     url(r'^(?P<username>.+)$', profile, name='profile'),
 )

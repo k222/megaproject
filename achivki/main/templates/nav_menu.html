@@ -4,7 +4,13 @@
         <li><a href="feed" {% if actfeed %} class="current" {% endif %}>Лента</a></li>
         <li><a href="achievements" {% if actachievements %} class="current" {% endif %}>Достижения</a></li>
         <li><a href="advice" {% if actadvice %} class="current" {% endif %}>Рекомендации</a></li>
-        <li><a href="friends" {% if actfriends %} class="current" {% endif %}>Друзья</a></li>
+        <li>
+            {% if actfriends %}
+                <a href="friends" class="current">Друзья</a>
+            {% else %}
+                <a href="{{ profile_name }}/friends" >Друзья</a>
+            {% endif %}
+        </li>
     </ul>
     {% endif %}
 

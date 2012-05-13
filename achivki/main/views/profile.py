@@ -21,7 +21,6 @@ def profile(request, username):
         'profile_name' : user.username,
         'my_username' : request.user.username,
         'gravatar_url' : user.get_profile().get_gravatar_url(),
-        'actfeed':True,
         'already_friend':is_friend(request.user,user)
         #TODO: add feed content
     }
