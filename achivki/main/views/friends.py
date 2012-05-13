@@ -96,7 +96,7 @@ def add_friends(request):
                 uf = UserFriends(user=user,friends=friend)
                 msg = _(u" Пользователь %(name)s  добавил Вас в друзья на сайте TickIt," \
                         u" Вы можете добавить его в друзья, воспользовавшись поиском, или на" \
-                        u" странице его профиля: http://host6640.hnt.ru/%(name)s " % {'name':friend.username})
+                        u" странице его профиля: http://host6640.hnt.ru/%(name)s " % {'name':user.username})
                 topic = _(u" Вас добавили в друзья TickIt")
                 try:
                     send_mail(topic, msg, 'tickit@bk.ru', [friend.email])
