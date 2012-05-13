@@ -11,6 +11,7 @@
 {% if not is_my_page and user_is_authenticated %}
         <table width="100%"><tr><td align="left" valign="bottom"><p class="hint_text">ОНЛАЙН!!!</p></td>
             <td align="right" valign="top">
+                <input  type="hidden" name="username" value="{{ profile_name }}" />
                 {% if already_friend %}
                     <input class="but delete_friends" type="button" name="delete_friends" value="Убрать из друзей" />
                     <input class="but add_friends no_show" type="button" name="add_friends" value="Добавить в друзья" />

@@ -15,9 +15,10 @@
 {% endif %}
 
 {% if friends %}
+    <table class="inform">
     {% for friend in friends %}
         <div class="aboutco">
-            <table class="inform"><tr><td><img class="avatar_small" src="{{ friend.gravatar_url }}"></td>
+            <tr><td><img class="avatar_small" src="{{ friend.gravatar_url }}"></td>
                 <td><a class="name" href="/{{ friend.name }}">&nbsp;{{ friend.name }}&nbsp;</a><br>
              {% if friend.is_authenticated %}
                 <br><p class="hint_text">ОНЛАЙН!!!<p><br>
@@ -25,19 +26,22 @@
              {% if is_authenticated and not friend.my_profile %}
 
                 <input  type="hidden" name="username" value="{{ friend.name }}" />
-                {% if friend.already_friend %}
-                    <input class="but delete_friends" type="button" name="delete_friends" value="Убрать из друзей" />
-                    <input class="but add_friends no_show" type="button" name="add_friends" value="Добавить в друзья" />
-                {% else %}
-                    <input class="but add_friends" type="button" name="add_friends" value="Добавить в друзья" />
-                    <input class="but delete_friends no_show" type="button" name="delete_friends" value="Убрать из друзей" />
-                {% endif %}
+                {% if not friend.not_my_page %}
+                    {% if friend.already_friend %}
+                        <input class="but delete_friends" type="button" name="delete_friends" value="Убрать из друзей" />
+                        <input class="but add_friends no_show" type="button" name="add_friends" value="Добавить в друзья" />
+                    {% else %}
+                        <input class="but add_friends" type="button" name="add_friends" value="Добавить в друзья" />
+                        <input class="but delete_friends no_show" type="button" name="delete_friends" value="Убрать из друзей" />
+                    {% endif %}
+                 {% endif %}
               {% endif %}
               </td></tr>
-            </table>
+
         </div>
 
     {% endfor %}
+    </table>
 {% else %}
         <p class= "inform_text">{{ empty_text }}</p>
 {% endif %}

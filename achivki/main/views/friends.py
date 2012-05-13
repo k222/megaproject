@@ -30,6 +30,7 @@ def show_friends(request, username):
                     friend = User.objects.get(id=friendEl.friends.id, username__contains=search_friends)
                     already_friend = False
                     my_profile = False
+                    not_my_page = (user.username != request.user.username)
                     if request.user.is_authenticated():
                         already_friend =  is_friend(request.user, friend)
                         my_profile = (friend.username == request.user.username)
@@ -37,7 +38,8 @@ def show_friends(request, username):
                                    'name' : friend.username,
                                    'gravatar_url' : friend.get_profile().get_gravatar_url(),
                                    'already_friend' : already_friend,
-                                   'my_profile':my_profile
+                                   'my_profile':my_profile,
+                                   'not_my_page':not_my_page
                     }
                     friend_hash.update(csrf(request))
                     friends.append (friend_hash)
@@ -91,7 +93,8 @@ def search_friends(request):
         'gravatar_url' : request.user.get_profile().get_gravatar_url() if request.user.is_authenticated() else "",
         'empty_text': _(u"По вашему запросу ничего не найдено"),
         'show_friends_filter': False,
-        'my_username':request.user.username
+        'my_username':request.user.username,
+
     }
     context.update(csrf(request))
     return render_to_response("friends.html", context)
