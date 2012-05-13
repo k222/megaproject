@@ -45,11 +45,12 @@ $(document).ready(function(){
 
     $('.add_friends').click(function(){
         var profilename = $(this).closest('td').find('input[name=username]').val();
+        var parenttd = $(this).closest('td')
         $.post('/add_friends', {'profile_name':profilename},
             function(data) {
                 if(data == "success"){
-                    $(this).closest('td').find('input[name=add_friends]').hide();
-                    $(this).closest('td').find('input[name=delete_friends]').show();
+                    parenttd.find('.delete_friends').show();
+                    parenttd.find('.add_friends').hide();
                 }
                 else{
                     alert(data);
@@ -60,10 +61,17 @@ $(document).ready(function(){
     });
 
     $('.delete_friends').click(function(){
-        $.post("/delete_friends", {'profile_name':$('input[name=username]').val(), rnd: Math.random()},
+        var profilename = $(this).closest('td').find('input[name=username]').val();
+        var parenttd = $(this).closest('td')
+        $.post("/delete_friends", {'profile_name':profilename, rnd: Math.random()},
             function(data) {
-                $('input[name=delete_friends]').hide();
-                $('input[name=add_friends]').show();
+                if(data == "success"){
+                    parenttd.find('.add_friends').show();
+                    parenttd.find('.delete_friends').hide();
+                }
+                else{
+                    alert(data);
+                }
             });
         return false;
 

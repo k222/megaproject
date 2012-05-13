@@ -134,7 +134,7 @@ def delete_friends(request):
                     fu = UserFriends.objects.get(user=friend,friends=user)
                     fu.delete()
             else:
-                error="Пользователь уже у Вас в друзьях"
+                error="Пользователь уже удален из друзей"
         else:
             error="Вы не авторизованы"
     else:
