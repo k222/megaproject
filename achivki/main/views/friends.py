@@ -67,7 +67,7 @@ def search_friends(request):
                      'already_friend' : already_friend
 
                     }
-        #user_hash.update(csrf(request))
+        user_hash.update(csrf(request))
         users.append (user_hash)
 
     context = {
@@ -125,9 +125,9 @@ def delete_friends(request):
         if request.user.is_authenticated():
             user = User.objects.get(id=request.user.id)
             friend = User.objects.get(username=profilename)
-            is_friend = is_friend(user, friend)
+            is_friend_vr = is_friend(user, friend)
 
-            if (is_friend):
+            if (is_friend_vr):
                 uf = UserFriends.objects.get(user=user,friends=friend)
                 uf.delete()
                 if(is_friend(friend, user)):
