@@ -3,8 +3,12 @@
         <div class="rc_panel">
             <div class="rc_paneltop"></div>
             <div class="rc_panelbody">
-                <form method="post" action="http://www.css-school.ru/">
-                    <input class="textfield" name="search" type="text" value="Поиск..." id="keyword"/>
+                <form method="post" action="/search_friends">
+                    <input class="textfield" name="search_word" type="text"
+                           value="{% if search_word %}{{ search_word }}{% else %}Поиск людей{% endif %}"
+                           onblur="if (value=='')value='Поиск людей'"
+                           onfocus="if (value=='Поиск людей')value=''; focus()"
+                           id="keyword"/>
                     <input class="button" type="submit" name="Submit" value="Go" />
                 </form>
             </div>

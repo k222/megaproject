@@ -546,3 +546,6 @@ p.error,.errorlist{color:red;}
 .inform_text { padding:10px 10px; color:blue; font-size:18px; text-align:center; display:block;}
 
 /*------ End of Register, login, logout -----*/
+
+.no_show {display:none;}
+.hint_text{ color:grey;}

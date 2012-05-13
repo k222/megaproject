@@ -5,11 +5,21 @@
 {% block content %}
 
 {% if is_my_page %}
-        ЭТО ВЫ!!!
+    <p class="hint_text">ЭТО ВЫ!!!</p>
 {% endif %}
 
 {% if not is_my_page and user_is_authenticated %}
-        ОНЛАЙН!!!
+        <table width="100%"><tr><td align="left" valign="bottom"><p class="hint_text">ОНЛАЙН!!!</p></td>
+            <td align="right" valign="top">
+                {% if already_friend %}
+                    <input class="but delete_friends" type="button" name="delete_friends" value="Убрать из друзей" />
+                    <input class="but add_friends no_show" type="button" name="add_friends" value="Добавить в друзья" />
+                {% else %}
+                    <input class="but add_friends" type="button" name="add_friends" value="Добавить в друзья" />
+                    <input class="but delete_friends no_show" type="button" name="delete_friends" value="Убрать из друзей" />
+                {% endif %}
+            </td></tr></table>
+        
 {% endif %}
 
     <div class="rc_panel2">

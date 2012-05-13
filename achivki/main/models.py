@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 from django.db import models
 from django.db.models.signals import post_save
 
+
 class UserProfile(models.Model):
     user = models.OneToOneField(User)
 
@@ -25,3 +26,8 @@ class UserProfile(models.Model):
     @models.permalink
     def get_absolute_url(self):
         return ('profile', [str(self.user.username)])
+
+
+class UserFriends(models.Model):
+    user = models.ForeignKey(User, related_name='user_id')
+    friends = models.ForeignKey(User, related_name='friends_id')
