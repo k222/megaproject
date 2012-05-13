@@ -8,6 +8,7 @@ def feed(request):
         'profile_name' : request.user.username,
         'gravatar_url' : request.user.get_profile().get_gravatar_url(),
         'is_authenticated' : True,
+        'actfeed':True
         #TODO: add feed content, sidebar content
     }
     return render_to_response("feed.html", context)
