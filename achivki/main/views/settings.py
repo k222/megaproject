@@ -13,8 +13,8 @@ def settings(request):
         change_kind = request.POST['change_kind']
         if change_kind == 'password':
             old_password = request.POST['oldpassword']
-            password1 = request.POST['password1']
-            password2 = request.POST['password2']
+            password1 = request.POST['newpassword1']
+            password2 = request.POST['newpassword2']
             if password1 != password2:
                 errors.append(_(u'Введённые пароли не совпадают.'))
             else:
