@@ -6,6 +6,7 @@ from achivki.main.views.profile import profile
 from achivki.main.views.feed import feed
 from achivki.main.views.registration import register, losepassword
 from achivki.main.views.friends import show_friends,search_friends,add_friends,delete_friends
+from achivki.main.views.settings import settings
 
 from django.contrib import admin
 admin.autodiscover()
@@ -28,7 +29,8 @@ urlpatterns = patterns('',
     url(r'^search_friends$', search_friends),
     url(r'^add_friends$', add_friends),
     url(r'^delete_friends$', delete_friends),
-    url(r'^(?P<username>.+)/friends$', show_friends),
+    url(r'^settings$', settings),
     url(r'^feed$', feed),
+    url(r'^(?P<username>.+)/friends$', show_friends),
     url(r'^(?P<username>.+)$', profile, name='profile'),
 )

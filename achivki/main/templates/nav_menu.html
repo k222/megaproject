@@ -1,9 +1,9 @@
 <div id="menu">
    {% if is_authenticated %}
     <ul>
-        <li><a href="feed" {% if actfeed %} class="current" {% endif %}>Лента</a></li>
-        <li><a href="achievements" {% if actachievements %} class="current" {% endif %}>Достижения</a></li>
-        <li><a href="advice" {% if actadvice %} class="current" {% endif %}>Рекомендации</a></li>
+        <li><a href="/feed" {% if actfeed %} class="current" {% endif %}>Лента</a></li>
+        <li><a href="/achievements" {% if actachievements %} class="current" {% endif %}>Достижения</a></li>
+        <li><a href="/advice" {% if actadvice %} class="current" {% endif %}>Рекомендации</a></li>
         <li>
             {% if actfriends %}
                 <a href="friends" class="current">Друзья</a>

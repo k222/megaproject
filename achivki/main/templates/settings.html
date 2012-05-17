@@ -1,0 +1,61 @@
+{% extends "generic/site_base.html" %}
+
+{% block title %}Настройки{% endblock %}
+
+{% block content %}
+<div class="vertical_indent"></div>
+{% if form.errors %}
+<p class="error">Логин или пароль введен неверно.</p>
+{% endif %}
+
+<form action="" method="post">
+    {% csrf_token %}
+    {% if message != "" %}
+        <p>{{ message }}</p>
+    {% else %}
+        {% if errors %}
+            {% for error in errors %}
+                <p class="error">{{ error }}</p>
+            {% endfor %}
+        {% endif %}
+    {% endif %}
+
+    <table class="login_table">
+        <tr>
+            <th>Изменить пароль:</th>
+        </tr>
+        <tr><th><label for="oldpassword">Старый пароль:</label></th>
+            <td><input type="password" name="oldpassword" value="" id="oldpassword"></td>
+        </tr>
+        <tr><th><label for="password1">Новый пароль:</label></th>
+            <td><input type="password" name="password1" value="" id="password1"></td>
+        </tr>
+        <tr><th><label for="password2">Подтверждение:</label></th>
+            <td><input type="password" name="password2" value="" id="password2"></td>
+        </tr>
+
+        <tr><th></th><td><input type="submit" class="but" value="Изменить пароль" />
+            <input type="hidden" name="change_kind" value="password" /></td>
+        </tr>
+
+        <tr><td>&thinsp;</td></tr>
+        <tr>
+            <th>Изменить адрес электронной почты:</th>
+        </tr>
+        <tr><th><label for="email">Текущий e-mail:</label></th>
+            <td><input type="email" name="email" value="{{ email }}" id="email" readonly="readonly"></td>
+        </tr>
+        <tr><th><label for="new_email">Новый e-mail:</label></th>
+            <td><input type="email" name="new_email" value="" id="new_email"></td>
+        </tr>
+        <tr><th><label for="confirm_email">Подтверждение:</label></th>
+            <td><input type="email" name="confirm_email" value="" id="confirm_email"></td>
+        </tr>
+
+        <tr><th></th><td><input type="submit" class="but" value="Изменить e-mail" />
+            <input type="hidden" name="change_kind" value="email" /></td>
+        </tr>
+    </table>
+</form>
+
+{% endblock %}
