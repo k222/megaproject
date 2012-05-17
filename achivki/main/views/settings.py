@@ -11,26 +11,27 @@ def settings(request):
     message = ""
     if request.method == 'POST':
         change_kind = request.POST['change_kind']
-        if change_kind == 'password':
+        if change_kind == 'apply_all':
             old_password = request.POST['oldpassword']
             password1 = request.POST['newpassword1']
             password2 = request.POST['newpassword2']
-            if password1 != password2:
-                errors.append(_(u'Введённые пароли не совпадают.'))
-            else:
-                if len(password1) < 6:
-                    errors.append(_(u'Новый пароль должен содержать не менее 6-ти символов.'))
-                else:
-                    if request.user.check_password(old_password):
-                        request.user.set_password(password1)
-                        request.user.save()
-                        message = _(u"Пароль изменён успешно.")
-                    else:
-                        errors.append(_(u'Старый пароль введён неверно.'))
-        else:
-            if change_kind == 'email':
-                email1 = request.POST['new_email']
-                email2 = request.POST['confirm_email']
+			if password1 != "" or password2 != "":
+				if password1 != password2:
+					errors.append(_(u'Введённые пароли не совпадают.'))
+				else:
+					if len(password1) < 6:
+						errors.append(_(u'Новый пароль должен содержать не менее 6-ти символов.'))
+					else:
+						if request.user.check_password(old_password):
+							request.user.set_password(password1)
+							request.user.save()
+							message = _(u"Пароль изменён успешно.")
+						else:
+							errors.append(_(u'Старый пароль введён неверно.'))
+        
+            email1 = request.POST['new_email']
+            email2 = request.POST['confirm_email']
+			if email1 != "" or email2 != "":
                 if email1 != email2:
                     errors.append(_(u"Введённые адреса электронной почты не совпадают."))
                 else:
