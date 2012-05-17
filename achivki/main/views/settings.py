@@ -15,7 +15,7 @@ def settings(request):
             old_password = request.POST['oldpassword']
             password1 = request.POST['newpassword1']
             password2 = request.POST['newpassword2']
-			if password1 != "" or password2 != "":
+			if not (password1 == "" and password2 == ""):
 				if password1 != password2:
 					errors.append(_(u'Введённые пароли не совпадают.'))
 				else:
@@ -31,7 +31,7 @@ def settings(request):
         
             email1 = request.POST['new_email']
             email2 = request.POST['confirm_email']
-			if email1 != "" or email2 != "":
+			if not (email1 == "" and email2 == ""):
                 if email1 != email2:
                     errors.append(_(u"Введённые адреса электронной почты не совпадают."))
                 else:
