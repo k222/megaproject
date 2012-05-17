@@ -70,17 +70,18 @@ def search_friends(request):
     search_word = "" if(search_word == _(u'Поиск людей')) else search_word
     #user_id= request.user.id if request.user.is_authenticated() else 0
     userList = User.objects.filter(username__contains=search_word)
-    if(request.user.is_authenticated()):
-        userList =userList.exclude(id=request.user.id)
+    #if(request.user.is_authenticated()):
+    userList =userList.exclude(id=request.user.id)
     for userEl in userList:
-        already_friend = False
-        if request.user.is_authenticated():
-            already_friend =  is_friend(request.user, userEl)
-        user_hash = {'is_authenticated' : userEl.is_authenticated(),
-                     'name' : userEl.username,
-                     'gravatar_url' : userEl.get_profile().get_gravatar_url(),
-                     'already_friend' : already_friend
-
+        #already_friend = False
+        #if request.user.is_authenticated():
+        already_friend =  is_friend(request.user, userEl)
+        userEI_profile = userEl.get_profile()
+        user_hash = {
+                        'last_activity' : userEI_profile.get_last_activity(),
+                        'name' : userEl.username,
+                        'gravatar_url' : userEI_profile.get_gravatar_url(),
+                        'already_friend' : already_friend
                     }
         user_hash.update(csrf(request))
         users.append (user_hash)
@@ -94,7 +95,6 @@ def search_friends(request):
         'empty_text': _(u"По вашему запросу ничего не найдено"),
         'show_friends_filter': False,
         'my_username':request.user.username,
-
     }
     context.update(csrf(request))
     return render_to_response("friends.html", context)

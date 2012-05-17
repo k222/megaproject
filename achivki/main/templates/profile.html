@@ -5,11 +5,11 @@
 {% block content %}
 
 {% if is_my_page %}
-    <p class="hint_text">ЭТО ВЫ!!!</p>
+    <p class="hint_text">Это вы</p>
 {% endif %}
 
-{% if not is_my_page and user_is_authenticated %}
-        <table width="100%"><tr><td align="left" valign="bottom"><p class="hint_text">ОНЛАЙН!!!</p></td>
+{% if not is_my_page %}
+        <table width="100%"><tr><td align="left" valign="bottom"><p class="hint_text"> {{ user_last_activity }}</p></td>
             <td align="right" valign="top">
                 <input  type="hidden" name="username" value="{{ profile_name }}" />
                 {% if already_friend %}

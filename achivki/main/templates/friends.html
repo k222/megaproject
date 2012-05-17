@@ -20,9 +20,7 @@
         <div class="aboutco">
             <tr><td><img class="avatar_small" src="{{ friend.gravatar_url }}"></td>
                 <td><a class="name" href="/{{ friend.name }}">&nbsp;{{ friend.name }}&nbsp;</a><br>
-             {% if friend.is_authenticated %}
-                <br><p class="hint_text">ОНЛАЙН!!!<p><br>
-             {% endif %}
+                <br><p class="hint_text">{{ friend.last_activity }}<p><br>
              {% if is_authenticated and not friend.my_profile %}
 
                 <input  type="hidden" name="username" value="{{ friend.name }}" />
