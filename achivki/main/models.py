@@ -1,15 +1,20 @@
 # -*- coding: utf-8 -*-
 import urllib, hashlib
+import django
 from django.contrib.auth.models import User
 from django.contrib.sessions.models import Session
 from django.db import models
 from django.db.models.fields import DateTimeField
+from django.db.models.fields import BooleanField
 from django.db.models.signals import post_save
 import datetime
 
 class UserProfile(models.Model):
     user = models.OneToOneField(User)
     last_activity =  DateTimeField()
+
+    send_friends_notification = BooleanField()
+
 
     def get_gravatar_url(self):
         size = 100
@@ -30,6 +35,7 @@ class UserProfile(models.Model):
     def create_user_profile(sender, instance, created, **kwargs):
         if created:
             UserProfile.objects.create(user=instance)
+            instance.get_profile().send_friends_notification = True
 
     def session_saved(sender, instance, created, **kwargs):
         id = instance.get_decoded().get('_auth_user_id')

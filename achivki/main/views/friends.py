@@ -116,7 +116,8 @@ def add_friends(request):
                         u" странице его профиля: http://host6640.hnt.ru/%(name)s " % {'name':user.username})
                 topic = _(u" Вас добавили в друзья TickIt")
                 try:
-                    send_mail(topic, msg, 'tickit@bk.ru', [friend.email])
+                    if friend.get_profile().send_friends_notification:
+                        send_mail(topic, msg, 'tickit@bk.ru', [friend.email])
                     #send_mail(topic, msg, 'tickit@bk.ru', ['Ann1137@ya.ru'])
                     uf.save()
                 except SMTPException:

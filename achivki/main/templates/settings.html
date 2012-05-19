@@ -52,6 +52,14 @@
             <td><input type="email" name="confirm_email" value="" id="confirm_email"></td>
         </tr>
 
+        <tr><td>&thinsp;</td></tr>
+        <tr>
+            <th>Оповещения:</th>
+        </tr>
+        <tr><th><label for="friends_notify">Добавление в друзья:</label></th>
+            <td><input type="checkbox" name="friends_notify" {{ friends_notify }}" id="friends_notify"></td>
+        </tr>
+
         <tr><th></th><td><input type="submit" class="but" value="Сохранить" />
             <input type="hidden" name="change_kind" value="apply_all" /></td>
         </tr>

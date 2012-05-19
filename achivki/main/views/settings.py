@@ -9,6 +9,8 @@ from django.core.validators import email_re
 def settings(request):
     errors = []
     message = ""
+    user_profile = request.user.get_profile()
+
     if request.method == 'POST':
         change_kind = request.POST['change_kind']
         if change_kind == 'apply_all':
@@ -26,7 +28,7 @@ def settings(request):
                         if request.user.check_password(old_password):
                             request.user.set_password(password1)
                             request.user.save()
-                            message = _(u"Пароль изменён успешно.")
+                            message = _(u"Настройки сохранены.")
                         else:
                             errors.append(_(u'Старый пароль введён неверно.'))
         
@@ -41,20 +43,31 @@ def settings(request):
                         errors.append(_(u"Указанный e-mail уже используется."))
                     except User.DoesNotExist:
                         if email_re.match(email1):
-                            request.user.email = email1;
-                            request.user.save();
-                            message = _(u"E-mail изменён успешно.")
+                            request.user.email = email1
+                            request.user.save()
+                            message = _(u"Настройки сохранены.")
                         else:
                             errors.append(_(u'Указан неверный e-mail.'))
 
+        if request.POST.has_key('friends_notify') and request.POST['friends_notify'] == 'on':
+            user_profile.send_friends_notification = True
+        else:
+            user_profile.send_friends_notification = False
+        user_profile.save()
 
+    if user_profile.send_friends_notification:
+        friends_notify = 'checked="True"'
+    else:
+        friends_notify = ''
 
     context = {
         'is_authenticated' : True,
         'profile_name' : request.user.username,
-        'gravatar_url' : request.user.get_profile().get_gravatar_url(),
+        'gravatar_url' : user_profile.get_gravatar_url(),
         'errors': errors,
         'message': message,
         'email': request.user.email,
+        'friends_notify': friends_notify,
+        'my_username': request.user.username,
     }
     return render_to_response("settings.html", context)
