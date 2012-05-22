@@ -1,12 +1,9 @@
 {% extends "generic/site_base.html" %}
-
 {% block title %}Друзья / TickIt{% endblock %}
-
-{% block head %}
-
-{% endblock %}
-
 {% block content %}
+
+
+
 {% if show_friends_filter %}
 <form method="post" action="friends">
     <input class="textfield2" name="search_friends" type="text" value="{{ search_friends }}" id="keyword" />
@@ -43,5 +40,7 @@
 {% else %}
         <p class= "inform_text">{{ empty_text }}</p>
 {% endif %}
+
+
 
 {% endblock %}

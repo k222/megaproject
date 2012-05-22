@@ -1,23 +1,18 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-    <title>{% block title %}TickIt{% endblock %}</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <link rel="stylesheet" type="text/css" href="/static/css/style.css"  />
-    <script type="text/javascript" src="/static/js/jquery-1.7.2.min.js"></script>
-    <script type="text/javascript" src="/static/js/friends.js"></script>
+{% extends "generic/basic_html.html" %}
 
-    <!--<link rel="stylesheet/less" type="text/css" href="/static/less/default.less">
-    <link rel="stylesheet/less" type="text/css" href="/static/less/base.less">
-    <link rel="stylesheet/less" type="text/css" href="/static/less/register.less">
+{% block title %}TickIt{% endblock %}</title>
 
-    <script type="text/javascript" src="/static/js/less-1.2.0.min.js"></script>-->
+{% block styles %}
+  <link rel="stylesheet" type="text/css" href="/static/css/style.css"  />
+{% endblock %}
 
-    {% block head %}{% endblock %}
-</head>
+{% block scripts %}
+  <script type="text/javascript" src="/static/js/friends.js"></script>
+{% endblock %}
 
-<body>
 
+
+{% block body %}
 <div id="container_wrapper">
     <div id="container">
 
@@ -38,5 +33,4 @@
 
     </div>
 </div>
-</body>
-</html>
+{% endblock %}

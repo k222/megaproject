@@ -1,0 +1,27 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+    "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+
+
+<head>
+  <title>{% block title %}{% endblock %}</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+  <script type="text/javascript" src="/static/js/less-1.2.0.min.js"></script>
+  <script type="text/javascript" src="/static/js/jquery-1.7.2.min.js"></script>
+
+  {% include "generic/bootstrap_support.html" %}
+
+  {% block head %}{% endblock %}
+  {% block scripts %}{% endblock %}
+  {% block styles %}{% endblock %}
+</head>
+
+
+
+<body>
+  {% block body %}{% endblock %}
+</body>
+
+</html>
