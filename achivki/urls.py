@@ -12,20 +12,25 @@ from django.contrib import admin
 admin.autodiscover()
 
 urlpatterns = patterns('',
-    # Examples:
-    # url(r'^$', 'achivki.views.home', name='home'),
-    # url(r'^achivki/', include('achivki.foo.urls')),
-
-    url(r'^$', 'django.shortcuts.render', {'template_name': 'stub.html'}),
-    url(r'^base$', 'django.shortcuts.render', {'template_name': 'generic/site_base.html'}),
-
+    # admin interface
     url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
     url(r'^admin/', include(admin.site.urls)),
 
+    # title page
+    url(r'^$', 'django.shortcuts.render', {'template_name': 'title.html'}),
+
+    # registration
     url(r'^register$', register),
     url(r'^login$',  mylogin),
     url(r'^logout$', logout, {'template_name': 'logout.html'}),
     url(r'^losepassword$', losepassword),
+
+    # pony countdown
+    url(r'^pony_countdown$', 'django.shortcuts.render', {'template_name': 'pony_countdown.html'}),
+    # debug hook for rendering any template
+    url(r'^template/(?P<template_name>.+)$', 'django.shortcuts.render'),
+
+    # friends
     url(r'^search_friends$', search_friends),
     url(r'^add_friends$', add_friends),
     url(r'^delete_friends$', delete_friends),

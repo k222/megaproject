@@ -4,11 +4,6 @@
 
 {% block styles %}
   <style type="text/css">
-    * {
-      margin: 0;
-      padding: 0;
-    }
-
     body {
       position: absolute;
       height: 100%;
@@ -16,7 +11,7 @@
 	    text-align: center;
     }
 	    	    
-    table.valign {
+    table#valign {
       position: relative;
       height: 100%;
       width: 100%;
@@ -29,18 +24,7 @@
 
 
 {% block body %}
-  <table class="valign"><tr><td>
-
-    <!--div class="center">
-      <script type="text/javascript">ponyCountdown();</script>
-    </div>
-
-    <div class="login">
-      <a class="login" href = "/register" >Регистрация</a><br>
-      <a class="login" href = "/login" >Войти</a><br>
-    </div-->
-
+  <table id="valign"><tr><td>
     {% block content %}{% endblock %}
-
   </td></tr></table>
 {% endblock %}

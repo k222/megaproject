@@ -1,0 +1,57 @@
+{% extends "generic/centered.html" %}
+{% block title %}Счётчик пони!{% endblock %}
+
+{% block styles %}
+  {{ block.super }}
+
+  <style type="text/less">
+    @font-face {
+      font-family:'CelestiaMedium';
+      font-style:normal;
+      font-weight:normal;
+      src: url('http://www.ponycountdown.com/celestiamedium-v1.51-webfont.eot');
+      src: url('http://www.ponycountdown.com/celestiamedium-v1.51-webfont.eot?#iefix') format('eot'),
+           url('http://www.ponycountdown.com/celestiamedium-v1.51-webfont.woff') format('woff'),
+           url('http://www.ponycountdown.com/celestiamedium-v1.51-webfont.ttf') format('truetype'),
+           url('http://www.ponycountdown.com/celestiamedium-v1.51-webfont.svg#webfontz6kMIS7r') format('svg');
+    }
+
+    body {
+      background-image: url(/static/img/pie.png);
+      background-color: #A0D6DD !important;
+      background-repeat: no-repeat;
+      background-size: 50% auto;
+      background-position: left -100%;
+      color: hsl(187, 47%, 37%);
+    }
+
+    #pony_countdown {
+      font-family: 'CelestiaMedium';
+      font-size: 25pt;
+      text-shadow: 2px 2px 0 hsl(187, 47%, 17%);
+      display: inline-block;
+      width: 500px;
+    }
+
+    #pony_countdown a {
+      text-shadow: none;
+      text-decoration: none;
+      border-bottom: 1px dotted;
+      color: hsl(2, 47%, 37%);
+      font-size: 15pt;
+      position: relative;
+      top: 1em;
+    }
+  </style>
+{% endblock %}
+
+{% block scripts %}
+  <script src="http://ponycountdown.com/api.js" type="text/javascript"></script>
+{% endblock %}
+
+
+{% block content %}
+    <div id="pony_countdown">
+      <script type="text/javascript">ponyCountdown();</script>
+    </div>
+{% endblock %}

@@ -1,15 +1,6 @@
 {% extends "generic/centered.html" %}
-
-{% block styles %}
-  {{ block.super }}
-
-  <style>
-    h1 {
-      font-size: 200pt;
-    }
-  </style>
-{% endblock %}
+{% block title %} Not found :( {% endblock %}
 
 {% block content %}
-   <h1>404</h1>
+   <h1 style="font-size: 200pt">404</h1>
 {% endblock %}

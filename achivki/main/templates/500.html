@@ -1,16 +1,6 @@
 {% extends "generic/centered.html" %}
-
-{% block styles %}
-{{ block.super }}
-
-<style>
-  h1 {
-    font-size: 200pt;
-  }
-</style>
-{% endblock %}
+{% block title %} Internal server error :[ {% endblock %}
 
 {% block content %}
-<h1>500</h1>
+<h1 style="font-size: 200pt">500</h1>
 {% endblock %}
-

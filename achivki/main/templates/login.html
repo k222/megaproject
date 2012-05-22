@@ -1,10 +1,7 @@
 {% extends "generic/site_base.html" %}
 {% block title %}Авторизация{% endblock %}
+
 {% block content %}
-
-
-
-
 
 <div class="vertical_indent"></div>
 {% if form.errors %}
@@ -23,7 +20,7 @@
          <tr><th></th>
              <td><a href="/losepassword" >Забыли пароль</a></td>
          </tr>
-        <tr><td colspan="2"><input type="submit" class="but" value="Войти" />
+        <tr><td colspan="2"><input type="submit" class="btn" value="Войти" />
                 <!--<input type="hidden" name="next" value="/feed" />--></td>
         </tr>
      </table>
