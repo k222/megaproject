@@ -4,7 +4,7 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render_to_response
 from django.contrib import auth
 from django.core.context_processors import csrf
-from achivki.main.views.forms import MyUserCreationForm
+from achivki.main.views.forms import RegistrationForm
 from django.core.mail import send_mail
 from django.utils.translation import ugettext_lazy as _
 from django.contrib.auth.models import UserManager, User
@@ -15,7 +15,7 @@ def register(request):
         return HttpResponseRedirect('/feed')
     errors = [];
     if request.method == 'POST':
-        form = MyUserCreationForm(request.POST)
+        form = RegistrationForm(request.POST)
         if form.is_valid():
             form.save(request)
             request.user = auth.authenticate(username=request.POST['username'],
@@ -23,7 +23,7 @@ def register(request):
             auth.login(request, request.user)
             return HttpResponseRedirect("/feed")
     else:
-        form = MyUserCreationForm()
+        form = RegistrationForm()
     return render_to_response("register.html", {'form' : form})
 
 def lost_password(request):

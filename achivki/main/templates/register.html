@@ -1,15 +1,16 @@
-{% extends "generic/site_base.html" %}
+{% extends "generic/centered.html" %}
 {% block title %} Регистрация / TickIt{% endblock %}
 
 {% block content %}
-    {% if errors %}
-        {% for error in errors %}
-            <p>{{ error }}</p>
-        {% endfor %}
-    {% endif %}
-   <form action="" method="post">
-    <table class="reg_tbl">{{ form.as_table }}</table>
-    {% csrf_token %}
-    <input type="submit" class="but" value="Зарегистрироваться">
-  </form>
+
+
+<form class="form-horizontal" action="" method="post"><fieldset>
+  {% csrf_token %}
+  <legend><a href="/">TickIt</a> уже ждёт нового пользователя</legend>
+
+  {{ form }}
+  <div class="form-actions">
+    <button type="submit" class="btn btn-primary">Зарегистрироваться</button>
+  </div>
+</fieldset></form>
 {% endblock %}

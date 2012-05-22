@@ -35,8 +35,8 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     'django.contrib.admindocs',
 
+    'bootstrap_forms',
     'achivki.main',
-
 )
 
 # Local time zone for this installation. Choices can be found here:

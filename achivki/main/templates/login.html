@@ -3,42 +3,33 @@
 
 {% block content %}
 
-<div style="width: 500px; display: inline-block;">
-  <form class="form-horizontal" action="" method="post"><fieldset>
-    {% csrf_token %}
+<form class="form-horizontal" action="" method="post"><fieldset>
+  {% csrf_token %}
 
-    <legend><a href="/">TickIt</a> приветствует вас, username</legend>
+  <legend><a href="/">TickIt</a> приветствует вас, username</legend>
 
-    {% if form.errors %}
-      <div class="control-group alert alert-error">Логин или пароль - неправильный.</div>
-    {% endif %}
+  {% if form.errors %}
+    <div class="control-group alert alert-error">Логин или пароль - неправильный.</div>
+  {% endif %}
 
-    <div class="control-group">
-      <label class="control-label" for="username">Логин:</label>
-      <div class="controls">
-        <input type="text" name="username" value="" id="username">
-      </div>
+  <div class="control-group">
+    <label class="control-label" for="username">Логин:</label>
+    <div class="controls">
+      <input type="text" name="username" value="" id="username">
     </div>
+  </div>
 
-    <div class="control-group">
-      <label class="control-label" for="username">Пароль:</label>
-      <div class="controls">
-        <input type="password" name="password" value="" id="password">
-      </div>
+  <div class="control-group">
+    <label class="control-label" for="username">Пароль:</label>
+    <div class="controls">
+      <input type="password" name="password" value="" id="password">
+      <a href="/lost_password" >Забыли пароль?</a>
     </div>
+  </div>
 
-    <div class="control-group">
-      <div class="controls">
-        <input type="submit" class="btn" value="Войти" />
-      </div>
-    </div>
-
-    <div class="control-group">
-      <div class="controls">
-        <a href="/lost_password" >Забыли пароль?</a>
-      </div>
-    </div>
-  </fieldset></form>
-</div>
+  <div class="control-group controls">
+    <input type="submit" class="btn btn-primary" value="Войти" />
+  </div>
+</fieldset></form>
 
 {% endblock %}

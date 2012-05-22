@@ -9,15 +9,18 @@ from achivki.main.models import UserProfile
 from achivki.main.views.recaptcha.widgets import ReCaptcha
 from recaptcha import captcha
 from django.conf import settings
+from achivki.bootstrap_forms.forms import BootstrapModelForm, Fieldset
 
 class ReCaptchaField(forms.CharField):
     default_error_messages = {
       'captcha_invalid': _(u'Вы неправильно ввели код с картинки')
     }
+
     def __init__(self, *args, **kwargs):
       self.widget = ReCaptcha
       self.required = True
       super(ReCaptchaField, self).__init__(*args, **kwargs)
+
     def clean(self, values):
       super(ReCaptchaField, self).clean(values[1])
       recaptcha_challenge_value = smart_unicode(values[0])
@@ -28,8 +31,10 @@ class ReCaptchaField(forms.CharField):
         raise forms.util.ValidationError(self.error_messages['captcha_invalid'])
       return values[0]
 
-
-class MyUserCreationForm(UserCreationForm):
+class RegistrationForm(BootstrapModelForm):
+    class Meta:
+        model = User
+        fields = ("username",)
 
     email = forms.EmailField(label=_(u'E-mail'), required=True,
             help_text = _(u'Введите действующий адрес электронной почты.'),)
@@ -84,11 +89,9 @@ class MyUserCreationForm(UserCreationForm):
         raise forms.ValidationError(self.error_messages['duplicate_email'])
 
     def save(self, commit=True):
-        user = super(MyUserCreationForm, self).save(commit=False)
-        user.email = self.cleaned_data['email']
+        user = super(RegistrationForm, self).save(commit=False)
         user.set_password(self.cleaned_data["password1"])
         if commit:
             user.save()
         return user
-
 
