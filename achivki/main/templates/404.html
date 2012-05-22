@@ -1,10 +1,15 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-        "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-    <title></title>
-</head>
-<body>
+{% extends "generic/centered.html" %}
 
-</body>
-</html>
+{% block styles %}
+  {{ block.super }}
+
+  <style>
+    h1 {
+      font-size: 200pt;
+    }
+  </style>
+{% endblock %}
+
+{% block content %}
+   <h1>404</h1>
+{% endblock %}
