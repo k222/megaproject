@@ -1,20 +1,15 @@
 {% extends "generic/site_base.html" %}
-
-{% block title %}Регистрация / TickIt{% endblock %}
-
-{% block head %}
-
-{% endblock %}
+{% block title %} Регистрация / TickIt{% endblock %}
 
 {% block content %}
     {% if errors %}
         {% for error in errors %}
-            <p class="error">{{ error }}</p>
+            <p>{{ error }}</p>
         {% endfor %}
     {% endif %}
    <form action="" method="post">
     <table class="reg_tbl">{{ form.as_table }}</table>
     {% csrf_token %}
-    <input type="submit" class="but" value="Зарегистрироваться (СДЕЛАЙТЕ ЭТУ КНОПКУ ПО ЦЕНТРУ, КТО-НИБУДЬ!!!)">
+    <input type="submit" class="but" value="Зарегистрироваться">
   </form>
 {% endblock %}

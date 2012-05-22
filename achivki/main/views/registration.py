@@ -26,7 +26,7 @@ def register(request):
         form = MyUserCreationForm()
     return render_to_response("register.html", {'form' : form})
 
-def losepassword(request):
+def lost_password(request):
     if not request.user.is_anonymous():
         return HttpResponseRedirect('/feed')
 
@@ -59,6 +59,6 @@ def losepassword(request):
         'email':request.POST.get('email', '')
         }
     context.update(csrf(request))
-    return render_to_response("losepassword.html", context)
+    return render_to_response("lost_password.html", context)
 
 
