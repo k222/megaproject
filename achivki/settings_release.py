@@ -1,4 +1,4 @@
 from achivki.settings_debug import *
 
-DEBUG = True
+DEBUG = False
 TEMPLATE_DEBUG = False
