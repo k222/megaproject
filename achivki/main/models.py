@@ -56,3 +56,27 @@ class UserProfile(models.Model):
 class UserFriends(models.Model):
     user = models.ForeignKey(User, related_name='user_id')
     friends = models.ForeignKey(User, related_name='friends_id')
+
+
+
+#class TaskTemplate(models.Model):
+#    user = models.ForeignKey(User, related_name='user_id')
+#    name = models.CharField(max_length=100)
+#    description = models.CharField(max_length=500)
+#    image = models.ImageField(upload_to='task_templates')
+
+class Task(models.Model):
+    user = models.ForeignKey(User)
+    name = models.CharField(max_length=100)
+    description = models.CharField(max_length=500)
+    image = models.ImageField(upload_to='task_templates')
+    status = models.SmallIntegerField()
+    #place =
+    #time = models.DateTimeField()
+
+#class TaskTag(models.Model):
+#    name = models.CharField(max_length=20)
+
+#class TemplateTags(models.Model):
+#    template = models.ForeignKey(TaskTemplate, related_name='template_id')
+#    tag = models.ForeignKey(TaskTag, related_name='tag_id')

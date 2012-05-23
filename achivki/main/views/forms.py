@@ -5,11 +5,12 @@ from django.utils.translation import ugettext_lazy as _
 from django.contrib.auth.forms import UserCreationForm
 from django import forms
 from django.utils.encoding import smart_unicode
-from achivki.main.models import UserProfile
+from achivki.main.models import UserProfile, Task
 from achivki.main.views.recaptcha.widgets import ReCaptcha
 from recaptcha import captcha
 from django.conf import settings
 from achivki.bootstrap_forms.forms import BootstrapModelForm, Fieldset
+from django.contrib.admin import widgets
 
 class ReCaptchaField(forms.CharField):
     default_error_messages = {
@@ -94,4 +95,30 @@ class RegistrationForm(BootstrapModelForm):
         if commit:
             user.save()
         return user
+########################################################################################################################
 
+class TaskCreationForm(BootstrapModelForm):
+    class Meta:
+        model = Task
+        exclude = ("user", "status")
+
+    name = forms.CharField(label=_(u"Название задания:"),
+        help_text=_(u"Введите сюда название создаваемого задания. Не более 100 символов. Обязательно для заполнения."),
+        required=True, max_length=100)
+    description = forms.CharField(widget=forms.widgets.Textarea(attrs={ 'rows':5 }),
+        label=_(u"Описание задания:"),
+        help_text=_(u"Введите сюда название создаваемого задания. Не более 500 символов. Обязательно для заполнения."),
+        max_length=500)
+    image = forms.ImageField(label=_(u"Иллюстрация:"),
+        help_text=_(u"Добавьте иллюстрацию для задания."), required=False)
+    #time = forms.DateTimeField(widget=widgets.AdminSplitDateTime(), label=_(u"Время выполнения:"),
+    #    help_text=_(u"Укажите время выполнения задания."), )
+
+    #tags = forms.CharField(label=_(u"Тэги задания:"),
+    #    help_text=_(u"Перечисляются через точку с запятой."), max_length=200)
+
+    def save(self, commit=False):
+        Task =  super(TaskCreationForm, self).save(commit=False)
+        if commit:
+            Task.save()
+        return Task

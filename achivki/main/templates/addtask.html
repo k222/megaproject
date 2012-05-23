@@ -1,0 +1,18 @@
+{% extends "generic/site_base.html" %}
+{% block title %} Новое задание / TickIt{% endblock %}
+{% block head %}
+{% endblock %}
+{% block content %}
+
+{{ form.media }}
+<form class="form-horizontal" enctype="multipart/form-data" method="post" action=""><fieldset>
+    {% csrf_token %}
+    <legend>Новое задание</legend>
+
+    {{ form }}
+    <div class="form-actions">
+        <button type="submit" class="btn btn-primary">Создать задание</button>
+    </div>
+</fieldset></form>
+
+{% endblock %}
