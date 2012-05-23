@@ -15,13 +15,13 @@ def add_task(request):
         if form.is_valid():
             task = form.save()
             task.user = User.objects.get(id=request.user.id)
+            task.status = 0
+            task.save()
 
             imfn = pjoin(achivki.settings_debug.MEDIA_ROOT, task.image.name)
             im = PImage.open(imfn)
             im.thumbnail((111,94), PImage.ANTIALIAS)
             im.save(imfn, "JPEG")
-            task.status = 0
-            task.save()
             return HttpResponseRedirect("/feed")
     else:
         form = TaskCreationForm()
