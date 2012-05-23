@@ -23,7 +23,11 @@
                 <!--<h3>Мои недавние достижения</h3>-->
                 <ul>
                     {% if is_authenticated %}
-                        <li><a href="/{{ my_username }}">Моя страница</a></li>
+                        {% if is_my_page %}
+                            <li><a href="/addtask">Добавить задание</a></li>
+                        {% else %}
+                            <li><a href="/{{ my_username }}">Моя страница</a></li>
+                        {% endif %}
                         <li><a href="/settings">Настройки</a></li>
                     {% else %}
                         <li><a href="/">Главная страница</a></li>

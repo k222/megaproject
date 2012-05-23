@@ -100,7 +100,7 @@ class RegistrationForm(BootstrapModelForm):
 class TaskCreationForm(BootstrapModelForm):
     class Meta:
         model = Task
-        exclude = ("user", "status")
+        exclude = ("user", "status", "added")
 
     name = forms.CharField(label=_(u"Название задания:"),
         help_text=_(u"Введите сюда название создаваемого задания. Не более 100 символов. Обязательно для заполнения."),

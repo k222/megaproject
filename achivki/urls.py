@@ -8,7 +8,7 @@ from achivki.main.views.feed import feed
 from achivki.main.views.registration import register, lost_password
 from achivki.main.views.friends import show_friends,search_friends,add_friends,delete_friends
 from achivki.main.views.settings import settings
-
+from achivki.settings_debug import MEDIA_ROOT
 from django.contrib import admin
 admin.autodiscover()
 
@@ -17,6 +17,10 @@ urlpatterns = patterns('',
     url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
     url(r'^admin/', include(admin.site.urls)),
     #url(r'^admin/jsi18n/', 'django.views.i18n.javascript_catalog'),
+
+    url(r'^media/(?P<path>.*)$', 'django.views.static.serve', {
+        'document_root': MEDIA_ROOT,
+        }),
 
     # title page
     url(r'^$', 'django.shortcuts.render', {'template_name': 'title.html'}),

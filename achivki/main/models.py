@@ -71,6 +71,15 @@ class Task(models.Model):
     description = models.CharField(max_length=500)
     image = models.ImageField(upload_to='task_templates')
     status = models.SmallIntegerField()
+    added = models.DateTimeField()
+
+    def get_status(self):
+        if self.status == 0:
+            return "В процессе"
+        elif self.status == 1:
+            return "Выполнено"
+        else:
+            return "Провалено"
     #place =
     #time = models.DateTimeField()
 

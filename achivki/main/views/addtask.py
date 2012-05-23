@@ -6,6 +6,7 @@ import achivki
 from achivki.main.views.forms import TaskCreationForm
 from PIL import Image as PImage
 from os.path import join as pjoin
+import datetime
 
 @login_required
 def add_task(request):
@@ -16,6 +17,7 @@ def add_task(request):
             task = form.save()
             task.user = User.objects.get(id=request.user.id)
             task.status = 0
+            task.added = datetime.datetime.now()
             task.save()
 
             imfn = pjoin(achivki.settings_debug.MEDIA_ROOT, task.image.name)
@@ -25,4 +27,11 @@ def add_task(request):
             return HttpResponseRedirect("/feed")
     else:
         form = TaskCreationForm()
-    return render_to_response("addtask.html", {'form': form})
+    context = {
+        'my_username' : request.user.username,
+        'profile_name' : request.user.username,
+        'gravatar_url' : request.user.get_profile().get_gravatar_url(),
+        'is_authenticated' : True,
+        'form': form,
+    }
+    return render_to_response("addtask.html", context)

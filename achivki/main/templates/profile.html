@@ -23,7 +23,7 @@
         
 {% endif %}
 
-    <div class="rc_panel2">
+    <!--<div class="rc_panel2">
         <div class="rc_paneltop2"></div>
         <div class="rc_panelbody">
             <form method="post" action="http://www.css-school.ru/">
@@ -31,143 +31,23 @@
             </form>
         </div>
         <div class="rc_panelbottom2"></div>
-    </div>
+    </div>-->
 
-
-    <div class="post">
-        <div class="postdate">16
-            <div class="month">OCT</div>
-        </div>
-        <div class="postbody">
-            <h2>Quisque rhoncus nulla quis sem</h2>
-            <div class="tagline">posted by admin - <span>Flash - Video</span></div>
-            <img src="/static/img/photo02.gif" alt="" />
-            <div class="posttext">
-                <p> Duis vitae velit sed dui malesuada dignissim. Donec mollis aliquet ligula. Maecenas adipiscing elementum ipsum. Pellentesque vitae magna. Sed nec est. Duis vitae velit sed dui malesuada dignissim. Donec mollis aliquet ligula. </p>
-                <div class="comment_more"><span><span>comments (11) </span>- </span><a href="http://www.css-school.ru/">Read more...</a></div>
+    {% for task in tasks %}
+        <div class="post">
+            <div class="postdate">&thinsp;
+                <div class="month">&thinsp;</div>
+            </div>
+            <div class="postbody">
+                <h2>{{ task.name }}</h2>
+                <div class="tagline">Добавлено: {% if task.added %}{{ task.added|date:"d.m.Y, H:m"  }}{% else %}очень давно.{% endif %}</span></div>
+                <img src="/media/{{ task.image }}" alt="" />
+                <div class="posttext">
+                    <p>{{ task.description }}</p>
+                    <div class="comment_more"><span><span>Статус: {{ task.get_status }}</span></span></div>
+                </div>
             </div>
         </div>
-    </div>
-    <div class="post">
-        <div class="postdate">22
-            <div class="month">OCT</div>
-        </div>
-        <div class="postbody">
-            <h2>Lorem ipsum dolor sit amet</h2>
-            <div class="tagline">posted by admin - <span>CSS - Website</span></div>
-            <img src="/static/img/photo04.gif" alt="" />
-            <div class="posttext">
-                <p> This is a free CSS website from TemplateMo.com. Feel free to edit and apply this template layout for your personal or commercial websites. You may put a credit link back to templatemo.com at the footer.</p>
-                <div class="comment_more"><span>comments (6) </span>- <a href="http://www.css-school.ru/">Read more...</a></div>
-            </div>
-        </div>
-    </div><div class="post">
-    <div class="postdate">15
-        <div class="month">OCT</div>
-    </div>
-    <div class="postbody">
-        <h2>Quisque rhoncus nulla quis sem</h2>
-        <div class="tagline">posted by admin - <span>Flash - Video</span></div>
-        <img src="/static/img/photo02.gif" alt="" />
-        <div class="posttext">
-            <p> Duis vitae velit sed dui malesuada dignissim. Donec mollis aliquet ligula. Maecenas adipiscing elementum ipsum. Pellentesque vitae magna. Sed nec est. Duis vitae velit sed dui malesuada dignissim. Donec mollis aliquet ligula. </p>
-            <div class="comment_more"><span><span>comments (11) </span>- </span><a href="http://www.css-school.ru/">Read more...</a></div>
-        </div>
-    </div>
-</div><div class="post">
-    <div class="postdate">22
-        <div class="month">OCT</div>
-    </div>
-    <div class="postbody">
-        <h2>Lorem ipsum dolor sit amet</h2>
-        <div class="tagline">posted by admin - <span>CSS - Website</span></div>
-        <img src="/static/img/photo04.gif" alt="" />
-        <div class="posttext">
-            <p> This is a free CSS website from TemplateMo.com. Feel free to edit and apply this template layout for your personal or commercial websites. You may put a credit link back to templatemo.com at the footer.</p>
-            <div class="comment_more"><span>comments (6) </span>- <a href="http://www.css-school.ru/">Read more...</a></div>
-        </div>
-    </div>
-</div><div class="post">
-    <div class="postdate">15
-        <div class="month">OCT</div>
-    </div>
-    <div class="postbody">
-        <h2>Quisque rhoncus nulla quis sem</h2>
-        <div class="tagline">posted by admin - <span>Flash - Video</span></div>
-        <img src="/static/img/photo02.gif" alt="" />
-        <div class="posttext">
-            <p> Duis vitae velit sed dui malesuada dignissim. Donec mollis aliquet ligula. Maecenas adipiscing elementum ipsum. Pellentesque vitae magna. Sed nec est. Duis vitae velit sed dui malesuada dignissim. Donec mollis aliquet ligula. </p>
-            <div class="comment_more"><span><span>comments (11) </span>- </span><a href="http://www.css-school.ru/">Read more...</a></div>
-        </div>
-    </div>
-</div><div class="post">
-    <div class="postdate">22
-        <div class="month">OCT</div>
-    </div>
-    <div class="postbody">
-        <h2>Lorem ipsum dolor sit amet</h2>
-        <div class="tagline">posted by admin - <span>CSS - Website</span></div>
-        <img src="/static/img/photo04.gif" alt="" />
-        <div class="posttext">
-            <p> This is a free CSS website from TemplateMo.com. Feel free to edit and apply this template layout for your personal or commercial websites. You may put a credit link back to templatemo.com at the footer.</p>
-            <div class="comment_more"><span>comments (6) </span>- <a href="http://www.css-school.ru/">Read more...</a></div>
-        </div>
-    </div>
-</div><div class="post">
-    <div class="postdate">22
-        <div class="month">OCT</div>
-    </div>
-    <div class="postbody">
-        <h2>Lorem ipsum dolor sit amet</h2>
-        <div class="tagline">posted by admin - <span>CSS - Website</span></div>
-        <img src="/static/img/photo04.gif" alt="" />
-        <div class="posttext">
-            <p> This is a free CSS website from TemplateMo.com. Feel free to edit and apply this template layout for your personal or commercial websites. You may put a credit link back to templatemo.com at the footer.</p>
-            <div class="comment_more"><span>comments (6) </span>- <a href="http://www.css-school.ru/">Read more...</a></div>
-        </div>
-    </div>
-</div><div class="post">
-    <div class="postdate">22
-        <div class="month">OCT</div>
-    </div>
-    <div class="postbody">
-        <h2>Lorem ipsum dolor sit amet</h2>
-        <div class="tagline">posted by admin - <span>CSS - Website</span></div>
-        <img src="/static/img/photo04.gif" alt="" />
-        <div class="posttext">
-            <p> This is a free CSS website from TemplateMo.com. Feel free to edit and apply this template layout for your personal or commercial websites. You may put a credit link back to templatemo.com at the footer.</p>
-            <div class="comment_more"><span>comments (6) </span>- <a href="http://www.css-school.ru/">Read more...</a></div>
-        </div>
-    </div>
-</div>
-    <div class="post">
-        <div class="postdate">15
-            <div class="month">OCT</div>
-        </div>
-        <div class="postbody">
-            <h2>Quisque rhoncus nulla quis sem</h2>
-            <div class="tagline">posted by admin - <span>Flash - Video</span></div>
-            <img src="/static/img/photo02.gif" alt="" />
-            <div class="posttext">
-                <p> Duis vitae velit sed dui malesuada dignissim. Donec mollis aliquet ligula. Maecenas adipiscing elementum ipsum. Pellentesque vitae magna. Sed nec est. Duis vitae velit sed dui malesuada dignissim. Donec mollis aliquet ligula. </p>
-                <div class="comment_more"><span><span>comments (11) </span>- </span><a href="http://www.css-school.ru/">Read more...</a></div>
-            </div>
-        </div>
-    </div>
-    <div class="post">
-        <div class="postdate">11
-            <div class="month">OCT</div>
-        </div>
-        <div class="postbody">
-            <h2>Suspendisse feugiat</h2>
-            <div class="tagline">posted by admin - <span>3D - Graphics</span></div>
-            <img src="/static/img/photo03.gif" alt="" />
-            <div class="posttext">
-                <p> Duis vitae velit sed dui malesuada dignissim. Donec mollis aliquet ligula. Maecenas adipiscing elementum ipsum. Pellentesque vitae magna. Sed nec est. Duis vitae velit sed dui malesuada dignissim. Donec mollis aliquet ligula. </p>
-                <div class="comment_more"><span><span>comments (18) </span> - </span><a href="http://www.css-school.ru/">Read more...</a></div>
-            </div>
-        </div>
-    </div>
-
+    {% endfor %}
 
 {% endblock %}
